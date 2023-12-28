@@ -1,0 +1,39 @@
+import random
+
+# Function to get the computer's choice
+def get_computer_choice():
+    return random.randint(1, 3)  # Generates a random number between 1 and 3
+
+# Function to determine the winner
+def determine_winner(user_choice, computer_choice):
+    if user_choice == computer_choice:
+        print("It's a tie!")
+    elif (user_choice == 1 and computer_choice == 3) or \
+         (user_choice == 2 and computer_choice == 1) or \
+         (user_choice == 3 and computer_choice == 2):
+        print("You win!")
+    else:
+        print("Computer wins!")
+
+def main():
+    # Menu for the user to choose Rock, Paper, or Scissors
+    print("Rock, Paper, Scissors Game")
+    print("1. Rock\n2. Paper\n3. Scissors")
+    user_choice = int(input("Enter your choice (1-3): "))
+
+    # Validate user input
+    if user_choice < 1 or user_choice > 3:
+        print("Invalid choice. Please enter a number between 1 and 3.")
+        return  # Exit without an error code
+
+    computer_choice = get_computer_choice()
+
+    # Display user and computer choices
+    print(f"\nYou chose {['Rock', 'Paper', 'Scissors'][user_choice - 1]}")
+    print(f"Computer chose {['Rock', 'Paper', 'Scissors'][computer_choice - 1]}\n")
+
+    # Determine and display the winner
+    determine_winner(user_choice, computer_choice)
+
+if __name__ == "__main__":
+    main()
